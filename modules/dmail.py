@@ -3,7 +3,11 @@ from hashlib import sha256
 
 from loguru import logger
 <<<<<<< HEAD
+<<<<<<< HEAD
 from config import DMAIL_CONTRACT, DMAIL_ABI
+=======
+from config import DMAIL_ABI, DMAIL_CONTRACT
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
 from config import DMAIL_ABI, DMAIL_CONTRACT
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -14,8 +18,13 @@ from .account import Account
 
 class Dmail(Account):
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
+=======
+    def __init__(self, account_id: int, private_key: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     def __init__(self, account_id: int, private_key: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="base")
@@ -35,9 +44,13 @@ class Dmail(Account):
 
         tx_data = await self.get_tx_data()
 <<<<<<< HEAD
+<<<<<<< HEAD
         tx_data.update(
             {"data": data, "to": self.w3.to_checksum_address(DMAIL_CONTRACT), "gasPrice": await self.w3.eth.gas_price}
         )
+=======
+        tx_data.update({"data": data, "to": self.w3.to_checksum_address(DMAIL_CONTRACT)})
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
         tx_data.update({"data": data, "to": self.w3.to_checksum_address(DMAIL_CONTRACT)})
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

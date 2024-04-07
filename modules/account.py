@@ -10,57 +10,45 @@ from eth_account import Account as EthereumAccount
 from web3.contract import Contract
 from web3.exceptions import TransactionNotFound
 from web3.middleware import async_geth_poa_middleware
-
-<<<<<<< HEAD
 from config import RPC, ERC20_ABI, SCROLL_TOKENS
 from settings import GAS_MULTIPLIER, MAX_PRIORITY_FEE
-=======
 from config import RPC, ERC20_ABI, BASE_TOKENS
 from settings import GAS_MULTIPLIER, GAS_PRIORITY_FEE
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+from config import RPC, ERC20_ABI, BASE_TOKENS
+from settings import GAS_MULTIPLIER, GAS_PRIORITY_FEE
 from utils.sleeping import sleep
 
 
 class Account:
-<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, chain: str, recipient: str) -> None:
-=======
+         pass
     def __init__(self, account_id: int, private_key: str, chain: str) -> None:
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+         pass
+    def __init__(self, account_id: int, private_key: str, chain: str) -> None:
         self.account_id = account_id
         self.private_key = private_key
         self.chain = chain
         self.explorer = RPC[chain]["explorer"]
         self.token = RPC[chain]["token"]
-
-<<<<<<< HEAD
         self.recipient = recipient
-
-=======
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         self.w3 = AsyncWeb3(
             AsyncWeb3.AsyncHTTPProvider(random.choice(RPC[chain]["rpc"])),
             middlewares=[async_geth_poa_middleware]
         )
-<<<<<<< HEAD
-
         self.account = EthereumAccount.from_key(private_key)
         self.address = self.account.address
 
     async def get_tx_data(self, value: int = 0, gas_price: bool = True):
-=======
         self.account = EthereumAccount.from_key(private_key)
         self.address = self.account.address
 
     async def get_tx_data(self, value: int = 0):
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         tx = {
             "chainId": await self.w3.eth.chain_id,
             "from": self.address,
             "value": value,
             "nonce": await self.w3.eth.get_transaction_count(self.address),
         }
-<<<<<<< HEAD
 
         if gas_price:
             tx.update({"gasPrice": await self.w3.eth.gas_price})
@@ -72,11 +60,8 @@ class Account:
         gas = await self.w3.eth.estimate_gas(tx_data)
 
         return int(gas * gas_price)
-
-=======
         return tx
-
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+    
     def get_contract(self, contract_address: str, abi=None) -> Union[Type[Contract], Contract]:
         contract_address = self.w3.to_checksum_address(contract_address)
 
@@ -118,11 +103,10 @@ class Account:
             amount_wei = int(balance * percent) if all_amount else self.w3.to_wei(random_amount, "ether")
             amount = self.w3.from_wei(int(balance * percent), "ether") if all_amount else random_amount
         else:
-<<<<<<< HEAD
+
             balance = await self.get_balance(SCROLL_TOKENS[from_token])
-=======
             balance = await self.get_balance(BASE_TOKENS[from_token])
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+            balance = await self.get_balance(BASE_TOKENS[from_token])
             amount_wei = int(balance["balance_wei"] * percent) \
                 if all_amount else int(random_amount * 10 ** balance["decimal"])
             amount = balance["balance"] * percent if all_amount else random_amount
@@ -138,12 +122,12 @@ class Account:
         amount_approved = await contract.functions.allowance(self.address, contract_address).call()
 
         return amount_approved
-
-<<<<<<< HEAD
     async def approve(self, amount: float, token_address: str, contract_address: str) -> None:
-=======
+        pass
     async def approve(self, amount: int, token_address: str, contract_address: str) -> None:
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+        pass
+    async def approve(self, amount: int, token_address: str, contract_address: str) -> None:
+
         token_address = self.w3.to_checksum_address(token_address)
         contract_address = self.w3.to_checksum_address(contract_address)
 
@@ -192,7 +176,6 @@ class Account:
                 await asyncio.sleep(1)
 
     async def sign(self, transaction) -> Any:
-<<<<<<< HEAD
         if transaction.get("gasPrice", None) is None:
             max_priority_fee_per_gas = self.w3.to_wei(MAX_PRIORITY_FEE["ethereum"], "gwei")
             max_fee_per_gas = await self.w3.eth.gas_price
@@ -208,7 +191,6 @@ class Account:
         gas = int(gas * GAS_MULTIPLIER)
 
         transaction.update({"gas": gas})
-=======
         max_fee_per_gas = await self.w3.eth.gas_price
         max_priority_fee_per_gas = self.w3.to_wei(GAS_PRIORITY_FEE[self.chain], "gwei")
         gas = int(await self.w3.eth.estimate_gas(transaction) * GAS_MULTIPLIER)
@@ -220,8 +202,6 @@ class Account:
                 "gas": gas
             }
         )
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
-
         signed_txn = self.w3.eth.account.sign_transaction(transaction, self.private_key)
 
         return signed_txn

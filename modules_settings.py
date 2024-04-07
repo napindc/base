@@ -1,15 +1,21 @@
 import asyncio
 <<<<<<< HEAD
+<<<<<<< HEAD
 from modules import *
 
 
 async def deposit_scroll(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
 from modules import *
 
 
 async def bridge_base(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Deposit from official bridge
@@ -23,6 +29,7 @@ async def bridge_base(account_id, key):
 
     all_amount = True
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     min_percent = 1
     max_percent = 1
@@ -61,6 +68,8 @@ async def bridge_orbiter(account_id, key, recipient):
 
     from_chain = "scroll"
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     min_percent = 5
     max_percent = 10
 
@@ -77,6 +86,9 @@ async def bridge_orbiter(account_id, key):
     """
 
     from_chain = "zksync"
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     to_chain = "base"
 
@@ -89,6 +101,7 @@ async def bridge_orbiter(account_id, key):
     min_percent = 5
     max_percent = 10
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     orbiter = Orbiter(account_id=account_id, private_key=key, chain=from_chain, recipient=recipient)
     await orbiter.bridge(to_chain, min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
@@ -151,11 +164,16 @@ async def bridge_nitro(account_id, key, recipient):
 
 async def wrap_eth(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     orbiter = Orbiter(account_id, key, from_chain)
     await orbiter.bridge(to_chain, min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
 async def wrap_eth(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Wrap ETH
@@ -173,17 +191,23 @@ async def wrap_eth(account_id, key):
     max_percent = 10
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     scroll = Scroll(account_id, key, "scroll", recipient)
     await scroll.wrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
 async def unwrap_eth(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     base = Base(account_id, key, "base")
     await base.wrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
 async def unwrap_eth(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Unwrap ETH
@@ -200,6 +224,7 @@ async def unwrap_eth(account_id, key):
     min_percent = 100
     max_percent = 100
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     scroll = Scroll(account_id, key, "scroll", recipient)
     await scroll.unwrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
@@ -285,6 +310,8 @@ async def swap_syncswap(account_id, key, recipient,
 
     Disclaimer – Don't use stable coin in from and to token | from_token USDC to_token USDT DON'T WORK!!!
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     base = Base(account_id, key, "base")
     await base.unwrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
@@ -297,11 +324,15 @@ async def swap_uniswap(account_id, key):
     to_token – Choose DESTINATION token ETH, USDBC | Select one
 
     Disclaimer - You can swap only ETH to any token or any token to ETH!
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     ______________________________________________________
     all_amount - swap from min_percent to max_percent
     """
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     from_token = from_token
     to_token = to_token
@@ -319,6 +350,8 @@ async def swap_uniswap(account_id, key):
     syncswap = SyncSwap(account_id, key, recipient)
     await syncswap.swap(
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     from_token = "USDBC"
     to_token = "ETH"
 
@@ -334,11 +367,15 @@ async def swap_uniswap(account_id, key):
 
     uniswap = Uniswap(account_id, key)
     await uniswap.swap(
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
     )
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 # async def swap_xyswap(account_id, key, recipient,
 #                       from_token="USDC", to_token="ETH",
@@ -383,6 +420,8 @@ async def deposit_layerbank(account_id, key, recipient):
     all_amount - deposit from min_percent to max_percent
     """
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 async def swap_pancake(account_id, key):
     """
     Make swap on PancakeSwap
@@ -689,11 +728,15 @@ async def stargate_bridge(account_id, key):
 
     chain_list = ["arbitrum", "optimism"]
 
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     min_amount = 0.0001
     max_amount = 0.0002
     decimal = 5
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     sleep_from = 5
     sleep_to = 24
@@ -713,6 +756,8 @@ async def stargate_bridge(account_id, key):
 
 async def deposit_aave(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     slippage = 1
 
     all_amount = True
@@ -725,6 +770,9 @@ async def deposit_aave(account_id, key, recipient):
 
 
 async def deposit_aave(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Make deposit on Aave
@@ -748,7 +796,11 @@ async def deposit_aave(account_id, key):
     max_percent = 10
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     aave = Aave(account_id, key, recipient)
+=======
+    aave = Aave(account_id, key)
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     aave = Aave(account_id, key)
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -757,6 +809,7 @@ async def deposit_aave(account_id, key):
     )
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 async def mint_zerius(account_id, key, recipient):
     """
@@ -768,6 +821,8 @@ async def mint_zerius(account_id, key, recipient):
 
     chains = ["arbitrum"]
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 async def deposit_moonwell(account_id, key):
     """
     Make deposit on MoonWell
@@ -899,11 +954,15 @@ async def mint_zerius(account_id, key):
     """
 
     chains = ["zora"]
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
     sleep_from = 10
     sleep_to = 20
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     zerius = Zerius(account_id, key, recipient)
     await zerius.bridge(chains, sleep_from, sleep_to)
@@ -922,11 +981,16 @@ async def mint_l2pass(account_id, key, recipient):
 
 async def mint_nft(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     zerius = Zerius(account_id, key)
     await zerius.bridge(chains, sleep_from, sleep_to)
 
 
 async def mint_nft(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Mint NFT on NFTS2ME
@@ -937,23 +1001,30 @@ async def mint_nft(account_id, key):
     contracts = [""]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     minter = Minter(account_id, key, recipient)
     await minter.mint_nft(contracts)
 
 
 async def mint_zkstars(account_id, key, recipient):
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     minter = Minter(account_id, key)
     await minter.mint_nft(contracts)
 
 
 async def mint_zkstars(account_id, key):
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     """
     Mint ZkStars NFT
     """
 
     contracts = [
+<<<<<<< HEAD
 <<<<<<< HEAD
         "0x609c2f307940b8f52190b6d3d3a41c762136884e",
         "0x16c0baa8a2aa77fab8d0aece9b6947ee1b74b943",
@@ -976,6 +1047,8 @@ async def mint_zkstars(account_id, key):
         "0xec9bef17876d67de1f2ec69f9a0e94de647fcc93",
         "0x5e6c493da06221fed0259a49beac09ef750c3de1"
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         "0x4c78c7d2f423cf07c6dc2542ac000c4788f03657",
         "0x657130a14e93731dfecc772d210ae8333303986c",
         "0x004416bef2544df0f02f23788c6ada0775868560",
@@ -996,6 +1069,9 @@ async def mint_zkstars(account_id, key):
         "0x5dabff127cad8d075b5cea7f795dcbae1ddf471d",
         "0xd3c6386362dabab1a30acc2c377d9ac2cc8b7b16",
         "0xed0407d6b84b2c86418cac16a347930b222b505c"
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     ]
 
@@ -1007,6 +1083,7 @@ async def mint_zkstars(account_id, key):
     sleep_from = 5
     sleep_to = 10
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     zkkstars = ZkStars(account_id, key, recipient)
     await zkkstars.mint(contracts, mint_min, mint_max, mint_all, sleep_from, sleep_to)
@@ -1048,6 +1125,8 @@ async def swap_tokens(account_id, key, recipient):
 
     slippage = 0.1
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     zkkstars = ZkStars(account_id, key)
     await zkkstars.mint(contracts, mint_min, mint_max, mint_all, sleep_from, sleep_to)
 
@@ -1071,11 +1150,15 @@ async def swap_tokens(account_id, key):
     sleep_to = 600
 
     slippage = 1
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
     min_percent = 100
     max_percent = 100
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     swap_tokens = SwapTokens(account_id, key, recipient)
     await swap_tokens.swap(use_dex, use_tokens, sleep_from, sleep_to, slippage, min_percent, max_percent)
@@ -1097,6 +1180,8 @@ async def swap_multiswap(account_id, key, recipient):
     min_swap = 3
     max_swap = 4
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     swap_tokens = SwapTokens(account_id, key)
     await swap_tokens.swap(use_dex, use_tokens, sleep_from, sleep_to, slippage, min_percent, max_percent)
 
@@ -1116,13 +1201,20 @@ async def swap_multiswap(account_id, key):
 
     min_swap = 1
     max_swap = 2
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
     sleep_from = 3
     sleep_to = 7
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     slippage = 0.1
+=======
+    slippage = 1
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     slippage = 1
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -1133,7 +1225,11 @@ async def swap_multiswap(account_id, key):
     max_percent = 10
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     multi = Multiswap(account_id, key, recipient)
+=======
+    multi = Multiswap(account_id, key)
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     multi = Multiswap(account_id, key)
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -1142,6 +1238,7 @@ async def swap_multiswap(account_id, key):
     )
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 async def custom_routes(account_id, key, recipient):
     """
@@ -1152,6 +1249,8 @@ async def custom_routes(account_id, key, recipient):
         – bridge_layerswap
         – bridge_nitro
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 async def custom_routes(account_id, key):
     """
     BRIDGE:
@@ -1159,11 +1258,15 @@ async def custom_routes(account_id, key):
         – bridge_orbiter
         – bungee_refuel
         – stargate_bridge
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     WRAP:
         – wrap_eth
         – unwrap_eth
     DEX:
+<<<<<<< HEAD
 <<<<<<< HEAD
         – swap_skydrome
         – swap_syncswap
@@ -1188,6 +1291,8 @@ async def custom_routes(account_id, key):
         – rubyscore_vote
         – deploy_contract
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         – swap_uniswap
         – swap_pancake
         – swap_woofi
@@ -1219,6 +1324,9 @@ async def custom_routes(account_id, key):
         – swap_multiswap
         – create_safe
         – mint_nft
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     ______________________________________________________
     Disclaimer - You can add modules to [] to select random ones,
@@ -1233,6 +1341,7 @@ async def custom_routes(account_id, key):
 
     use_modules = [
 <<<<<<< HEAD
+<<<<<<< HEAD
         create_omnisea,
         [create_omnisea, mint_zerius, None],
         (create_omnisea, 1, 3),
@@ -1245,6 +1354,8 @@ async def custom_routes(account_id, key):
 
     routes = Routes(account_id, key, recipient)
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
         [bridge_nft, deposit_aave, None],
         (bridge_nft, 1, 3),
     ]
@@ -1255,6 +1366,9 @@ async def custom_routes(account_id, key):
     random_module = True
 
     routes = Routes(account_id, key)
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
     await routes.start(use_modules, sleep_from, sleep_to, random_module)
 
@@ -1262,6 +1376,7 @@ async def custom_routes(account_id, key):
 #########################################
 ########### NO NEED TO CHANGE ###########
 #########################################
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 async def withdraw_layerbank(account_id, key, recipient):
@@ -1302,6 +1417,8 @@ async def rubyscore_vote(account_id, key, recipient):
 def get_tx_count(wallets):
     asyncio.run(check_tx(wallets))
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 async def send_mail(account_id, key):
     dmail = Dmail(account_id, key)
     await dmail.send_mail()
@@ -1333,4 +1450,7 @@ async def create_safe(account_id, key):
 
 def get_tx_count():
     asyncio.run(check_tx())
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

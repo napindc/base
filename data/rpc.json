@@ -41,6 +41,7 @@
     "explorer": "https://basescan.org/tx/",
     "token": "ETH"
 <<<<<<< HEAD
+<<<<<<< HEAD
   },
   "scroll": {
     "rpc": [
@@ -48,6 +49,8 @@
     ],
     "explorer": "https://scrollscan.com/tx/",
     "token": "ETH"
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
   }

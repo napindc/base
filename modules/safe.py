@@ -1,5 +1,9 @@
 import time
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+from typing import Dict
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
 from typing import Dict
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -13,8 +17,13 @@ from .account import Account
 
 class GnosisSafe(Account):
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
+=======
+    def __init__(self, account_id: int, private_key: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     def __init__(self, account_id: int, private_key: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="base")
@@ -35,7 +44,11 @@ class GnosisSafe(Account):
                 ZERO_ADDRESS,
                 "0x",
 <<<<<<< HEAD
+<<<<<<< HEAD
                 self.w3.to_checksum_address("0xf48f2B2d2a534e402487b3ee7C18c33Aec0Fe5e4"),
+=======
+                self.w3.to_checksum_address("0x017062a1dE2FE6b99BE3d9d37841FeD19F573804"),
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
                 self.w3.to_checksum_address("0x017062a1dE2FE6b99BE3d9d37841FeD19F573804"),
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -49,7 +62,11 @@ class GnosisSafe(Account):
 
         transaction = await self.contract.functions.createProxyWithNonce(
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.w3.to_checksum_address("0x3E5c63644E683549055b9Be8653de26E0B4CD36E"),
+=======
+            self.w3.to_checksum_address("0xfb1bffC9d739B8D520DaF37dF666da4C687191EA"),
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
             self.w3.to_checksum_address("0xfb1bffC9d739B8D520DaF37dF666da4C687191EA"),
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

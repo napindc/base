@@ -10,8 +10,13 @@ from .account import Account
 
 class Aave(Account):
 <<<<<<< HEAD
+<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
+=======
+    def __init__(self, account_id: int, private_key: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
     def __init__(self, account_id: int, private_key: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="base")
@@ -56,7 +61,11 @@ class Aave(Account):
 
         transaction = await self.contract.functions.depositETH(
 <<<<<<< HEAD
+<<<<<<< HEAD
             self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
+=======
+            self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
             self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -87,7 +96,11 @@ class Aave(Account):
             )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             await self.approve(amount, "0xf301805be1df81102c957f6d4ce29d2b8c056b2a", AAVE_CONTRACT)
+=======
+            await self.approve(amount, "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7", AAVE_CONTRACT)
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
             await self.approve(amount, "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7", AAVE_CONTRACT)
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
@@ -96,7 +109,11 @@ class Aave(Account):
 
             transaction = await self.contract.functions.withdrawETH(
 <<<<<<< HEAD
+<<<<<<< HEAD
                 self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
+=======
+                self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 =======
                 self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

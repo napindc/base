@@ -1,5 +1,6 @@
 import random
 <<<<<<< HEAD
+<<<<<<< HEAD
 import time
 from typing import Union
 import asyncio
@@ -80,6 +81,8 @@ def main(
             # ETH to USDC or back
             setting['from_token'], setting['to_token'] = setting['to_token'], setting['from_token']
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
@@ -210,4 +213,7 @@ if __name__ == '__main__':
 
     print("\n❤️ Subscribe to me – https://t.me/sybilwave\n")
     print("🤑 Donate me: 0x00000b0ddce0bfda4531542ad1f2f5fad7b9cde9")
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

@@ -7,6 +7,7 @@ with open('data/abi/erc20_abi.json') as file:
     ERC20_ABI = json.load(file)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 with open('data/abi/bridge/deposit.json') as file:
     DEPOSIT_ABI = json.load(file)
 
@@ -34,6 +35,8 @@ with open("data/abi/skydrome/abi.json", "r") as file:
 with open("data/abi/zebra/abi.json", "r") as file:
     ZEBRA_ROUTER_ABI = json.load(file)
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 with open("accounts.txt", "r") as file:
     ACCOUNTS = [row.strip() for row in file]
 
@@ -84,11 +87,15 @@ with open("data/abi/stargate/bridge.json", "r") as file:
 
 with open("data/abi/stargate/router.json", "r") as file:
     STARGATE_ROUTER_ABI = json.load(file)
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
 with open("data/abi/aave/abi.json", "r") as file:
     AAVE_ABI = json.load(file)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 with open("data/abi/layerbank/abi.json", "r") as file:
     LAYERBANK_ABI = json.load(file)
@@ -108,6 +115,8 @@ with open("data/abi/omnisea/abi.json", "r") as file:
 with open("data/abi/nft2me/abi.json", "r") as file:
     NFTS2ME_ABI = json.load(file)
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 with open("data/abi/moonwell/abi.json", "r") as file:
     MOONWELL_ABI = json.load(file)
 
@@ -122,11 +131,15 @@ with open("data/abi/mintfun/abi.json", "r") as file:
 
 with open("data/abi/rai/abi.json", "r") as file:
     RAI_ABI = json.load(file)
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
 with open("data/abi/gnosis/abi.json", "r") as file:
     SAFE_ABI = json.load(file)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 with open("data/deploy/abi.json", "r") as file:
     DEPLOYER_ABI = json.load(file)
@@ -134,6 +147,8 @@ with open("data/deploy/abi.json", "r") as file:
 with open("data/deploy/bytecode.txt", "r") as file:
     DEPLOYER_BYTECODE = file.read()
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 with open("data/abi/zerius/abi.json", "r") as file:
     ZERIUS_ABI = json.load(file)
 
@@ -142,11 +157,15 @@ with open("data/abi/nft2me/abi.json", "r") as file:
 
 with open("data/abi/dmail/abi.json", "r") as file:
     DMAIL_ABI = json.load(file)
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
 with open("data/abi/zkstars/abi.json", "r") as file:
     ZKSTARS_ABI = json.load(file)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 with open("data/abi/rubyscore/abi.json", "r") as file:
     RUBYSCORE_VOTE_ABI = json.load(file)
@@ -208,6 +227,8 @@ SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
 
 RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"
 =======
+=======
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 with open("data/abi/rocketsam/abi.json", "r") as file:
     ROCKETSAM_ABI = json.load(file)
 
@@ -303,4 +324,7 @@ SAFE_CONTRACT = "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc"
 ZERIUS_CONTRACT = "0x178608ffe2cca5d36f3fc6e69426c4d3a5a74a41"
 
 DMAIL_CONTRACT = "0x47fbe95e981C0Df9737B6971B451fB15fdC989d9"
+<<<<<<< HEAD
+>>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
+=======
 >>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

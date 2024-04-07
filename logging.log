@@ -1,22 +1,5 @@
-2024-04-07 20:19:12.021 | INFO     | __main__:run:47 - Wait between wallets: 1200 - 1800 seconds
-2024-04-07 20:19:12.024 | INFO     | __main__:run:48 - Wait between websites: 300 - 1200 seconds
-2024-04-07 20:19:12.024 | INFO     | __main__:run:49 - Wait between cycles: 43500 - 48600 seconds
-2024-04-07 20:21:56.075 | INFO     | __main__:run:47 - Wait between wallets: 1200 - 1800 seconds
-2024-04-07 20:21:56.076 | INFO     | __main__:run:48 - Wait between websites: 300 - 1200 seconds
-2024-04-07 20:21:56.077 | INFO     | __main__:run:49 - Wait between cycles: 43500 - 48600 seconds
-2024-04-07 20:23:03.416 | INFO     | __main__:run:47 - Wait between wallets: 1200 - 1800 seconds
-2024-04-07 20:23:03.417 | INFO     | __main__:run:48 - Wait between websites: 300 - 1200 seconds
-2024-04-07 20:23:03.418 | INFO     | __main__:run:49 - Wait between cycles: 43500 - 48600 seconds
-2024-04-07 20:23:03.418 | INFO     | main:main:52 - Running module swap_syncswap with wallet 36020cc5a0d264284bed0c4343bc122c79590d54db49748ebf96ed7af1ae4288
-2024-04-07 20:23:04.924 | INFO     | modules.syncswap:swap:72 - [1][0x5990293D87Cf4979F2233422f9B2DeB722013915] Swap on SyncSwap – USDC -> ETH | 0.000194 USDC
-2024-04-07 20:23:06.688 | SUCCESS  | modules.account:approve:123 - [1][0x5990293D87Cf4979F2233422f9B2DeB722013915] Make approve
-2024-04-07 20:23:08.009 | ERROR    | utils.helpers:wrapper:14 - Error | {'code': -32000, 'message': 'insufficient funds for transfer'}
-2024-04-07 20:23:08.009 | INFO     | utils.sleeping:sleep:10 - 💤 Sleep 18 s.
-2024-04-07 20:23:16.668 | INFO     | __main__:run:47 - Wait between wallets: 1200 - 1800 seconds
-2024-04-07 20:23:16.669 | INFO     | __main__:run:48 - Wait between websites: 300 - 1200 seconds
-2024-04-07 20:23:16.670 | INFO     | __main__:run:49 - Wait between cycles: 43500 - 48600 seconds
-2024-04-07 20:23:16.670 | INFO     | main:main:52 - Running module swap_syncswap with wallet 36020cc5a0d264284bed0c4343bc122c79590d54db49748ebf96ed7af1ae4288
-2024-04-07 20:23:18.521 | INFO     | modules.syncswap:swap:72 - [1][0x5990293D87Cf4979F2233422f9B2DeB722013915] Swap on SyncSwap – USDC -> ETH | 0.000151 USDC
-2024-04-07 20:23:20.797 | SUCCESS  | modules.account:approve:123 - [1][0x5990293D87Cf4979F2233422f9B2DeB722013915] Make approve
-2024-04-07 20:23:22.489 | ERROR    | utils.helpers:wrapper:14 - Error | {'code': -32000, 'message': 'insufficient funds for transfer'}
-2024-04-07 20:23:22.490 | INFO     | utils.sleeping:sleep:10 - 💤 Sleep 18 s.
+2024-04-07 22:22:00.006 | INFO     | __main__:run:47 - Wait between wallets: 1200 - 1800 seconds
+2024-04-07 22:22:00.010 | INFO     | __main__:run:48 - Wait between websites: 300 - 1200 seconds
+2024-04-07 22:22:00.012 | INFO     | __main__:run:49 - Wait between cycles: 43500 - 48600 seconds
+2024-04-07 22:22:00.014 | INFO     | main:main:51 - Running module swap_syncswap with wallet 36020cc5a0d264284bed0c4343bc122c79590d54db49748ebf96ed7af1ae4288
+2024-04-07 22:22:03.002 | INFO     | modules.syncswap:swap:72 - [1][0x5990293D87Cf4979F2233422f9B2DeB722013915] Swap on SyncSwap – USDC -> ETH | 0.000193 USDC

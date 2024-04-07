@@ -2,7 +2,6 @@ import asyncio
 import time
 import random
 from typing import Union, Type, Dict, Any
-
 from hexbytes import HexBytes
 from loguru import logger
 from web3 import AsyncWeb3
@@ -12,37 +11,28 @@ from web3.exceptions import TransactionNotFound
 from web3.middleware import async_geth_poa_middleware
 from config import RPC, ERC20_ABI, SCROLL_TOKENS
 from settings import GAS_MULTIPLIER, MAX_PRIORITY_FEE
-from config import RPC, ERC20_ABI, BASE_TOKENS
-from settings import GAS_MULTIPLIER, GAS_PRIORITY_FEE
-from config import RPC, ERC20_ABI, BASE_TOKENS
-from settings import GAS_MULTIPLIER, GAS_PRIORITY_FEE
 from utils.sleeping import sleep
 
 
 class Account:
     def __init__(self, account_id: int, private_key: str, chain: str, recipient: str) -> None:
-         pass
-    def __init__(self, account_id: int, private_key: str, chain: str) -> None:
-         pass
-    def __init__(self, account_id: int, private_key: str, chain: str) -> None:
         self.account_id = account_id
         self.private_key = private_key
         self.chain = chain
         self.explorer = RPC[chain]["explorer"]
         self.token = RPC[chain]["token"]
+
         self.recipient = recipient
+
         self.w3 = AsyncWeb3(
             AsyncWeb3.AsyncHTTPProvider(random.choice(RPC[chain]["rpc"])),
             middlewares=[async_geth_poa_middleware]
         )
+
         self.account = EthereumAccount.from_key(private_key)
         self.address = self.account.address
 
     async def get_tx_data(self, value: int = 0, gas_price: bool = True):
-        self.account = EthereumAccount.from_key(private_key)
-        self.address = self.account.address
-
-    async def get_tx_data(self, value: int = 0):
         tx = {
             "chainId": await self.w3.eth.chain_id,
             "from": self.address,
@@ -60,8 +50,7 @@ class Account:
         gas = await self.w3.eth.estimate_gas(tx_data)
 
         return int(gas * gas_price)
-        return tx
-    
+
     def get_contract(self, contract_address: str, abi=None) -> Union[Type[Contract], Contract]:
         contract_address = self.w3.to_checksum_address(contract_address)
 
@@ -103,10 +92,7 @@ class Account:
             amount_wei = int(balance * percent) if all_amount else self.w3.to_wei(random_amount, "ether")
             amount = self.w3.from_wei(int(balance * percent), "ether") if all_amount else random_amount
         else:
-
             balance = await self.get_balance(SCROLL_TOKENS[from_token])
-            balance = await self.get_balance(BASE_TOKENS[from_token])
-            balance = await self.get_balance(BASE_TOKENS[from_token])
             amount_wei = int(balance["balance_wei"] * percent) \
                 if all_amount else int(random_amount * 10 ** balance["decimal"])
             amount = balance["balance"] * percent if all_amount else random_amount
@@ -122,12 +108,8 @@ class Account:
         amount_approved = await contract.functions.allowance(self.address, contract_address).call()
 
         return amount_approved
-    async def approve(self, amount: float, token_address: str, contract_address: str) -> None:
-        pass
-    async def approve(self, amount: int, token_address: str, contract_address: str) -> None:
-        pass
-    async def approve(self, amount: int, token_address: str, contract_address: str) -> None:
 
+    async def approve(self, amount: float, token_address: str, contract_address: str) -> None:
         token_address = self.w3.to_checksum_address(token_address)
         contract_address = self.w3.to_checksum_address(contract_address)
 
@@ -191,17 +173,7 @@ class Account:
         gas = int(gas * GAS_MULTIPLIER)
 
         transaction.update({"gas": gas})
-        max_fee_per_gas = await self.w3.eth.gas_price
-        max_priority_fee_per_gas = self.w3.to_wei(GAS_PRIORITY_FEE[self.chain], "gwei")
-        gas = int(await self.w3.eth.estimate_gas(transaction) * GAS_MULTIPLIER)
 
-        transaction.update(
-            {
-                "maxPriorityFeePerGas": max_priority_fee_per_gas,
-                "maxFeePerGas": max_fee_per_gas,
-                "gas": gas
-            }
-        )
         signed_txn = self.w3.eth.account.sign_transaction(transaction, self.private_key)
 
         return signed_txn

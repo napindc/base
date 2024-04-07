@@ -2,33 +2,15 @@ from typing import Dict
 
 import aiohttp
 from loguru import logger
-<<<<<<< HEAD
-<<<<<<< HEAD
 from config import XYSWAP_CONTRACT, SCROLL_TOKENS
-=======
-from config import XYSWAP_CONTRACT, BASE_TOKENS
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
-=======
-from config import XYSWAP_CONTRACT, BASE_TOKENS
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 from utils.gas_checker import check_gas
 from utils.helpers import retry
 from .account import Account
 
 
 class XYSwap(Account):
-<<<<<<< HEAD
-<<<<<<< HEAD
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
-=======
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
-=======
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
     async def get_quote(self, from_token: str, to_token: str, amount: int, slippage: float):
         url = "https://aggregator-api.xy.finance/v1/quote"
@@ -104,18 +86,8 @@ class XYSwap(Account):
             f"[{self.account_id}][{self.address}] Swap on XYSwap – {from_token} -> {to_token} | {amount} {from_token}"
         )
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         from_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if from_token == "ETH" else SCROLL_TOKENS[from_token]
         to_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if to_token == "ETH" else SCROLL_TOKENS[to_token]
-=======
-        from_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if from_token == "ETH" else BASE_TOKENS[from_token]
-        to_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if to_token == "ETH" else BASE_TOKENS[to_token]
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
-=======
-        from_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if from_token == "ETH" else BASE_TOKENS[from_token]
-        to_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if to_token == "ETH" else BASE_TOKENS[to_token]
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
         quote = await self.get_quote(from_token, to_token, amount_wei, slippage)
 

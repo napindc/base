@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div align="center">
   <img src="https://i.imgur.com/Vaah2gJ.png"  />
   <h1>Run Scroll Swaps Script</h1>
@@ -34,13 +33,11 @@ git clone git@github.com:napindc/base.git
 
 ```
 git clone https://github.com/czbag/base.git
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944
 
 cd base
 
 pip install -r requirements.txt
 
-<<<<<<< HEAD
 ~/scroll$ python run_swaps.py --wallets WALLET_KEY1 WALLET_KEY2 WALLET_KEYN
 ```
 ---
@@ -171,4 +168,3 @@ python main.py
 3) В файле rpc.json по пути data/rpc.json можем менять rpc на свои
 
 Инфа по апдейтам да и просто лайф блог –– https://t.me/sybilwave
->>>>>>> 30c15bba68552d47a53a5f7d4cd386cad749b944

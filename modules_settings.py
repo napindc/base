@@ -477,36 +477,36 @@ async def swap_tokens(account_id, key, recipient):
     await swap_tokens.swap(use_dex, use_tokens, sleep_from, sleep_to, slippage, min_percent, max_percent)
 
 
-async def swap_multiswap(account_id, key, recipient):
-    """
-    Multi-Swap module: Automatically performs the specified number of swaps in one of the dexes.
-    ______________________________________________________
-    use_dex - Choose any dex: syncswap, skydrome, zebra, xyswap
-    quantity_swap - Quantity swaps
-    ______________________________________________________
-    random_swap_token - If True the swap path will be [ETH -> USDC -> USDC -> ETH] (random!)
-    If False the swap path will be [ETH -> USDC -> ETH -> USDC]
-    """
+# async def swap_multiswap(account_id, key, recipient):
+#     """
+#     Multi-Swap module: Automatically performs the specified number of swaps in one of the dexes.
+#     ______________________________________________________
+#     use_dex - Choose any dex: syncswap, skydrome, zebra, xyswap
+#     quantity_swap - Quantity swaps
+#     ______________________________________________________
+#     random_swap_token - If True the swap path will be [ETH -> USDC -> USDC -> ETH] (random!)
+#     If False the swap path will be [ETH -> USDC -> ETH -> USDC]
+#     """
 
-    use_dex = ["syncswap", "skydrome", "zebra"]
+#     use_dex = ["syncswap", "skydrome", "zebra"]
 
-    min_swap = 3
-    max_swap = 4
+#     min_swap = 3
+#     max_swap = 4
 
-    sleep_from = 3
-    sleep_to = 7
+#     sleep_from = 3
+#     sleep_to = 7
 
-    slippage = 0.1
+#     slippage = 0.1
 
-    random_swap_token = True
+#     random_swap_token = True
 
-    min_percent = 5
-    max_percent = 10
+#     min_percent = 5
+#     max_percent = 10
 
-    multi = Multiswap(account_id, key, recipient)
-    await multi.swap(
-        use_dex, sleep_from, sleep_to, min_swap, max_swap, slippage, random_swap_token, min_percent, max_percent
-    )
+#     multi = Multiswap(account_id, key, recipient)
+#     await multi.swap(
+#         use_dex, sleep_from, sleep_to, min_swap, max_swap, slippage, random_swap_token, min_percent, max_percent
+#     )
 
 
 async def custom_routes(account_id, key, recipient):

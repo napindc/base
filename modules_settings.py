@@ -161,72 +161,72 @@ async def unwrap_eth(account_id, key, recipient):
     await scroll.unwrap_eth(min_amount, max_amount, decimal, all_amount, min_percent, max_percent)
 
 
-async def swap_skydrome(account_id, key, recipient, 
-                        from_token="USDC", to_token="ETH",
-                        min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
-                        all_amount=True, min_percent=100, max_percent=100):
-    """
-    Make swap on Skydrome
-    ______________________________________________________
-    from_token – Choose SOURCE token ETH, USDC | Select one
-    to_token – Choose DESTINATION token ETH, USDC | Select one
+# async def swap_skydrome(account_id, key, recipient, 
+#                         from_token="USDC", to_token="ETH",
+#                         min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
+#                         all_amount=True, min_percent=100, max_percent=100):
+#     """
+#     Make swap on Skydrome
+#     ______________________________________________________
+#     from_token – Choose SOURCE token ETH, USDC | Select one
+#     to_token – Choose DESTINATION token ETH, USDC | Select one
 
-    Disclaimer - You can swap only ETH to any token or any token to ETH!
-    ______________________________________________________
-    all_amount - swap from min_percent to max_percent
-    """
+#     Disclaimer - You can swap only ETH to any token or any token to ETH!
+#     ______________________________________________________
+#     all_amount - swap from min_percent to max_percent
+#     """
 
-    from_token = from_token
-    to_token = to_token
+#     from_token = from_token
+#     to_token = to_token
 
-    min_amount = min_amount
-    max_amount = max_amount
-    decimal = decimal
-    slippage = slippage
+#     min_amount = min_amount
+#     max_amount = max_amount
+#     decimal = decimal
+#     slippage = slippage
 
-    all_amount = all_amount
+#     all_amount = all_amount
 
-    min_percent = min_percent
-    max_percent = max_percent
+#     min_percent = min_percent
+#     max_percent = max_percent
 
-    skydrome = Skydrome(account_id, key, recipient)
-    await skydrome.swap(
-        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
-    )
+#     skydrome = Skydrome(account_id, key, recipient)
+#     await skydrome.swap(
+#         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+#     )
 
 
-async def swap_zebra(account_id, key, recipient,
-                     from_token="USDC", to_token="ETH",
-                     min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
-                     all_amount=True, min_percent=100, max_percent=100):
-    """
-    Make swap on Zebra
-    ______________________________________________________
-    from_token – Choose SOURCE token ETH, USDC | Select one
-    to_token – Choose DESTINATION token ETH, USDC | Select one
+# async def swap_zebra(account_id, key, recipient,
+#                      from_token="USDC", to_token="ETH",
+#                      min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
+#                      all_amount=True, min_percent=100, max_percent=100):
+#     """
+#     Make swap on Zebra
+#     ______________________________________________________
+#     from_token – Choose SOURCE token ETH, USDC | Select one
+#     to_token – Choose DESTINATION token ETH, USDC | Select one
 
-    Disclaimer - You can swap only ETH to any token or any token to ETH!
-    ______________________________________________________
-    all_amount - swap from min_percent to max_percent
-    """
+#     Disclaimer - You can swap only ETH to any token or any token to ETH!
+#     ______________________________________________________
+#     all_amount - swap from min_percent to max_percent
+#     """
 
-    from_token = from_token
-    to_token = to_token
+#     from_token = from_token
+#     to_token = to_token
 
-    min_amount = min_amount
-    max_amount = max_amount
-    decimal = decimal
-    slippage = slippage
+#     min_amount = min_amount
+#     max_amount = max_amount
+#     decimal = decimal
+#     slippage = slippage
 
-    all_amount = all_amount
+#     all_amount = all_amount
 
-    min_percent = min_percent
-    max_percent = max_percent
+#     min_percent = min_percent
+#     max_percent = max_percent
 
-    zebra = Zebra(account_id, key, recipient)
-    await zebra.swap(
-        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
-    )
+#     zebra = Zebra(account_id, key, recipient)
+#     await zebra.swap(
+#         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+#     )
 
 
 async def swap_syncswap(account_id, key, recipient,
@@ -263,38 +263,38 @@ async def swap_syncswap(account_id, key, recipient,
     )
 
 
-async def swap_xyswap(account_id, key, recipient,
-                      from_token="USDC", to_token="ETH",
-                      min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
-                      all_amount=True, min_percent=100, max_percent=100):
-    """
-    Make swap on XYSwap
-    ______________________________________________________
-    from_token – Choose SOURCE token ETH, WETH, USDC | Select one
-    to_token – Choose DESTINATION token ETH, WETH, USDC | Select one
+# async def swap_xyswap(account_id, key, recipient,
+#                       from_token="USDC", to_token="ETH",
+#                       min_amount=0.0001, max_amount=0.0002, decimal=6, slippage=1,
+#                       all_amount=True, min_percent=100, max_percent=100):
+#     """
+#     Make swap on XYSwap
+#     ______________________________________________________
+#     from_token – Choose SOURCE token ETH, WETH, USDC | Select one
+#     to_token – Choose DESTINATION token ETH, WETH, USDC | Select one
 
-    Disclaimer - If you use True for use_fee, you support me 1% of the transaction amount
-    ______________________________________________________
-    all_amount - swap from min_percent to max_percent
-    """
+#     Disclaimer - If you use True for use_fee, you support me 1% of the transaction amount
+#     ______________________________________________________
+#     all_amount - swap from min_percent to max_percent
+#     """
 
-    from_token = from_token
-    to_token = to_token
+#     from_token = from_token
+#     to_token = to_token
 
-    min_amount = min_amount
-    max_amount = max_amount
-    decimal = decimal
-    slippage = slippage
+#     min_amount = min_amount
+#     max_amount = max_amount
+#     decimal = decimal
+#     slippage = slippage
 
-    all_amount = all_amount
+#     all_amount = all_amount
 
-    min_percent = min_percent
-    max_percent = max_percent
+#     min_percent = min_percent
+#     max_percent = max_percent
 
-    xyswap = XYSwap(account_id, key, recipient)
-    await xyswap.swap(
-        from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
-    )
+#     xyswap = XYSwap(account_id, key, recipient)
+#     await xyswap.swap(
+#         from_token, to_token, min_amount, max_amount, decimal, slippage, all_amount, min_percent, max_percent
+#     )
 
 
 async def deposit_layerbank(account_id, key, recipient):

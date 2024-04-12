@@ -1,5 +1,6 @@
 import random
 from typing import Union
+
 from loguru import logger
 from config import SCROLL_TOKENS
 from modules import *

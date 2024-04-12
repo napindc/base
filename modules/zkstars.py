@@ -1,4 +1,5 @@
 import random
+
 from loguru import logger
 from config import ZKSTARS_ABI
 from utils.gas_checker import check_gas

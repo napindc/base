@@ -1,11 +1,13 @@
 import asyncio
 import random
+
 from eth_typing import ChecksumAddress
 from loguru import logger
 from web3 import AsyncWeb3, AsyncHTTPProvider
 from web3.middleware import async_geth_poa_middleware
 from eth_account import Account as EthereumAccount
 from tabulate import tabulate
+
 from config import RPC
 
 

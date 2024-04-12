@@ -1,5 +1,6 @@
 import random
 from hashlib import sha256
+
 from loguru import logger
 from config import DMAIL_CONTRACT, DMAIL_ABI
 from utils.gas_checker import check_gas

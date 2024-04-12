@@ -1,8 +1,10 @@
 import asyncio
 import time
 import random
+
 from web3 import Web3
 from web3.eth import AsyncEth
+
 from config import RPC
 from settings import CHECK_GWEI, MAX_GWEI
 from loguru import logger

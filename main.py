@@ -44,9 +44,9 @@ def main(
         wait_between_cycles_min=((12*60*60)+5),
         ):
 
-    is_expired = handle_app_expiration()
-    if is_expired:
-        return
+    # is_expired = handle_app_expiration()
+    # if is_expired:
+    #     return
 
 
 

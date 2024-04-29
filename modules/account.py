@@ -9,6 +9,7 @@ from web3 import AsyncWeb3
 from eth_account import Account as EthereumAccount
 from web3.contract import Contract
 from web3.exceptions import TransactionNotFound
+
 from web3.middleware import async_geth_poa_middleware
 
 from config import RPC, ERC20_ABI, SCROLL_TOKENS
@@ -62,6 +63,7 @@ class Account:
         contract = self.w3.eth.contract(address=contract_address, abi=abi)
 
         return contract
+
 
     async def get_balance(self, contract_address: str) -> Dict:
         contract_address = self.w3.to_checksum_address(contract_address)

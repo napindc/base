@@ -15,8 +15,9 @@ from utils.helpers import retry
 from .account import Account
 from eth_abi import abi
 
-
+# converted_amount = 0 
 class SyncSwap(Account):
+    converted_amount = 0
     def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
         super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
@@ -59,6 +60,7 @@ class SyncSwap(Account):
     ):
         token_address = Web3.to_checksum_address(SCROLL_TOKENS[from_token])
         global converted_amount
+        
 
         # amount_wei, amount, balance = await self.get_amount(
         #     from_token,
@@ -73,6 +75,7 @@ class SyncSwap(Account):
         # logger.info(
         #     f"[{self.account_id}][{self.address}] Swap on SyncSwap – {from_token} -> {to_token} | {amount} {from_token}"
         # )
+        
 
         pool_address = await self.get_pool(from_token, to_token)
 
@@ -90,14 +93,14 @@ class SyncSwap(Account):
                 max_percent
                 )
                 min_amount_out = await self.get_min_amount_out(pool_address, token_address, amount_wei, slippage)
-                converted_amount =  min_amount_out / 10 ** decimal
+                self.converted_amount =  min_amount_out / 10 ** decimal
                 logger.info(
-                    f"[{self.account_id}][{self.address[:5]+'.....'+self.address[-5:]}] Swap on SyncSwap – {from_token} -> {to_token} | {amount} {from_token} (Converted: {converted_amount} {to_token})"
+                    f"[{self.account_id}][{self.address[:5]+'.....'+self.address[-5:]}] Swap on SyncSwap – {from_token} -> {to_token} | {amount} {from_token} (Converted: {self.converted_amount} {to_token})"
                 )
                 tx_data.update({"value": amount_wei})
             else:
-                min_usdc_amount = converted_amount * 0.85
-                max_usdc_amount = converted_amount
+                min_usdc_amount = self.converted_amount * 0.85
+                max_usdc_amount = self.converted_amount
 
                 amount_wei, amount, balance = await self.get_amount(
                 from_token,

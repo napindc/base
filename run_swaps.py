@@ -51,7 +51,7 @@ class SwapRunner():
             modules_settings.get_tx_count(wallets)
         else:
 
-            main(
+            main.main(
                 self.websites,
                 self.wallets,
                 self.website_settings,
@@ -72,9 +72,9 @@ if __name__ == '__main__':
 
     wallet_group = parser.add_argument_group("Wallets")
     wallet_xclsv_group = wallet_group.add_mutually_exclusive_group()
-    wallet_xclsv_group.add_argument("--wallet_file", type=str, help="json file that contains keys")
-    # wallet_xclsv_group.add_argument("--wallet", help="The wallet you want to use")
-    # wallet_xclsv_group.add_argument("--wallets", type=str, help="The wallets you want to use")
+    # wallet_xclsv_group.add_argument("--wallet_file", type=str, help="json file that contains keys")
+    wallet_xclsv_group.add_argument("--wallet", help="The wallet you want to use")
+    wallet_xclsv_group.add_argument("--wallets", nargs='+', help="The wallets you want to use")
 
     wait_between_wallets_group = parser.add_argument_group("Wait Between Wallets")
     wait_between_wallets_group.add_argument("--wait-between-wallets-max-seconds", type=int, default=(30*60), help="The maximum time in seconds to wait between wallets default: 1800 seconds (30 minutes)")
@@ -148,9 +148,21 @@ if __name__ == '__main__':
         assert type(websites[0]) == types.FunctionType, f"Action {args.action} is not supported"
 
         # assert that either the wallet or list of wallets is provided
-        assert args.wallet_file, "You must provide a wallet to use"
+        # assert args.wallet_file, "You must provide a wallet to use"
+        assert args.wallets, "You must provide a wallet to use"
+        # assert args.wallet, "You must provide a wallet to use"
 
         website_settings = [
+            {
+                "from_token": args.syncswap_from_token,
+                "to_token": args.syncswap_to_token,
+                "min_amount": args.syncswap_min_amount,
+                "max_amount": args.syncswap_max_amount,
+                "slippage": args.syncswap_slippage,
+                "all_amount": args.syncswap_all_amount,
+                "min_percent": args.syncswap_min_percent,
+                "max_percent": args.syncswap_max_percent,
+            },
             {
                 "from_token": args.skydrome_from_token,
                 "to_token": args.skydrome_to_token,
@@ -172,16 +184,6 @@ if __name__ == '__main__':
                 "max_percent": args.zebra_max_percent,
             },
             {
-                "from_token": args.syncswap_from_token,
-                "to_token": args.syncswap_to_token,
-                "min_amount": args.syncswap_min_amount,
-                "max_amount": args.syncswap_max_amount,
-                "slippage": args.syncswap_slippage,
-                "all_amount": args.syncswap_all_amount,
-                "min_percent": args.syncswap_min_percent,
-                "max_percent": args.syncswap_max_percent,
-            },
-            {
                 "from_token": args.xyswap_from_token,
                 "to_token": args.xyswap_to_token,
                 "min_amount": args.xyswap_min_amount,
@@ -194,40 +196,41 @@ if __name__ == '__main__':
         ]
 
         wallets = []
-        # if args.wallets:
-        #     wallets = [key for key in args.wallets.split(" ")]
-        # elif args.wallet:
-        #     wallets = [args.wallet]
+        if args.wallets:
+            wallets = args.wallets
+            
+        elif args.wallet:
+            wallets = [args.wallet]
 
         # parent_dir = os.path.abspath(os.path.join(os.getcwd(), os.pardir))  # Parent directory
         # grandparent_dir = os.path.abspath(os.path.join(parent_dir, os.pardir))  # Grandparent directory
         # file_path = os.path.join(grandparent_dir, 'scroll.json')
 
-        if os.path.exists(args.wallet_file):
-            os.environ['wallet_file_path'] = args.wallet_file
-            # Load keys from the JSON file
-            with open(args.wallet_file, 'r') as f:
-                keys_data = json.load(f)
+        # if os.path.exists(args.wallet_file):
+        #     os.environ['wallet_file_path'] = args.wallet_file
+        #     # Load keys from the JSON file
+        #     with open(args.wallet_file, 'r') as f:
+        #         keys_data = json.load(f)
 
-              # Decrypt each key and add it to the wallets list
-                for key_info in keys_data['keysDetails']:
-                    encrypted_data = key_info['keysDetails']['encryptedData']
-                    encryption_key = key_info['keysDetails']['key']
-                    iv = key_info['keysDetails']['uuid']
+        #       # Decrypt each key and add it to the wallets list
+        #         for key_info in keys_data['keysDetails']:
+        #             encrypted_data = key_info['keysDetails']['encryptedData']
+        #             encryption_key = key_info['keysDetails']['key']
+        #             iv = key_info['keysDetails']['uuid']
 
-                    # Base64 decode the encrypted data and encryption key
-                    encrypted_data_bytes = bytes.fromhex(encrypted_data)
-                    encryption_key_bytes = bytes.fromhex(encryption_key)
-                    iv_bytes = bytes.fromhex(iv)
+        #             # Base64 decode the encrypted data and encryption key
+        #             encrypted_data_bytes = bytes.fromhex(encrypted_data)
+        #             encryption_key_bytes = bytes.fromhex(encryption_key)
+        #             iv_bytes = bytes.fromhex(iv)
 
-                    # Decrypt the data
-                    cipher = AES.new(encryption_key_bytes, AES.MODE_CBC, iv=iv_bytes)
-                    decrypted_data = unpad(cipher.decrypt(encrypted_data_bytes), AES.block_size)
+        #             # Decrypt the data
+        #             cipher = AES.new(encryption_key_bytes, AES.MODE_CBC, iv=iv_bytes)
+        #             decrypted_data = unpad(cipher.decrypt(encrypted_data_bytes), AES.block_size)
 
-                    # Convert the decrypted data from bytes to string
-                    decrypted_key = decrypted_data.decode('utf-8')
-                    # Add the decrypted key to the wallets list
-                    wallets.append(decrypted_key)
+        #             # Convert the decrypted data from bytes to string
+        #             decrypted_key = decrypted_data.decode('utf-8')
+        #             # Add the decrypted key to the wallets list
+        #             wallets.append(decrypted_key)
 
 
         if args.random:

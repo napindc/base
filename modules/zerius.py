@@ -1,5 +1,5 @@
 import random
-from typing import Dict, List
+from typing import List
 
 from loguru import logger
 
@@ -11,13 +11,12 @@ from .account import Account
 
 
 class Zerius(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.contract = self.get_contract(ZERIUS_CONTRACT, ZERIUS_ABI)
 
         self.chain_ids = {
-            "zora": 195,
             "arbitrum": 110,
             "optimism": 111,
             "polygon": 109,

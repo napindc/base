@@ -1,27 +1,21 @@
 import random
-from typing import List
+from typing import List, Union
 
 from loguru import logger
-from config import BASE_TOKENS
+from config import SCROLL_TOKENS
 from modules import *
 from utils.sleeping import sleep
 
 
 class SwapTokens(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.swap_modules = {
-            "uniswap": Uniswap,
-            "pancake": Pancake,
-            "woofi": WooFi,
-            "baseswap": BaseSwap,
-            "alienswap": AlienSwap,
-            "maverick": Maverick,
-            "odos": Odos,
-            "inch": Inch,
+            "syncswap": SyncSwap,
+            "skydrome": Skydrome,
+            "zebra": Zebra,
             "xyswap": XYSwap,
-            "openocean": OpenOcean,
         }
 
     def get_swap_module(self, use_dex: list):
@@ -34,7 +28,7 @@ class SwapTokens(Account):
             tokens: List,
             sleep_from: int,
             sleep_to: int,
-            slippage: int,
+            slippage: Union[int, float],
             min_percent: int,
             max_percent: int,
     ):
@@ -46,10 +40,10 @@ class SwapTokens(Account):
             if token == "ETH":
                 continue
 
-            balance = await self.get_balance(BASE_TOKENS[token])
+            balance = await self.get_balance(SCROLL_TOKENS[token])
 
             if balance["balance_wei"] > 0:
-                swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key)
+                swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key, self.recipient)
                 await swap_module.swap(
                     token,
                     "ETH",

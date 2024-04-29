@@ -6,8 +6,8 @@ from .account import Account
 
 
 class Routes(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
     def process_module(self, module):
         if isinstance(module, list):
@@ -40,6 +40,6 @@ class Routes(Account):
                 logger.info(f"[{self.account_id}][{self.address}] Skip module")
                 continue
 
-            await module(self.account_id, self.private_key)
+            await module(self.account_id, self.private_key, self.recipient)
 
             await sleep(sleep_from, sleep_to)

@@ -1,8 +1,9 @@
 import asyncio
+import time
 import random
 
-from web3 import AsyncWeb3
-from web3.middleware import async_geth_poa_middleware
+from web3 import Web3
+from web3.eth import AsyncEth
 
 from config import RPC
 from settings import CHECK_GWEI, MAX_GWEI
@@ -11,14 +12,12 @@ from loguru import logger
 
 async def get_gas():
     try:
-        w3 = AsyncWeb3(
-            AsyncWeb3.AsyncHTTPProvider(random.choice(RPC["ethereum"]["rpc"])),
-            middlewares=[async_geth_poa_middleware],
+        w3 = Web3(
+            Web3.AsyncHTTPProvider(random.choice(RPC["ethereum"]["rpc"])),
+            modules={"eth": (AsyncEth,)},
         )
-
         gas_price = await w3.eth.gas_price
         gwei = w3.from_wei(gas_price, 'gwei')
-
         return gwei
     except Exception as error:
         logger.error(error)

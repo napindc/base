@@ -1,6 +1,6 @@
 from loguru import logger
 from settings import RETRY_COUNT
-from utils.sleeping import sleep
+from .sleeping import sleep
 
 
 def retry(func):
@@ -20,6 +20,7 @@ def retry(func):
 
 def remove_wallet(private_key: str):
     with open("accounts.txt", "r") as file:
+
         lines = file.readlines()
 
     with open("accounts.txt", "w") as file:

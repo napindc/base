@@ -1,26 +1,21 @@
 import random
+from typing import Union
 
 from loguru import logger
-from config import BASE_TOKENS
+from config import SCROLL_TOKENS
 from modules import *
 from utils.sleeping import sleep
 
 
 class Multiswap(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.swap_modules = {
-            "uniswap": Uniswap,
-            "pancake": Pancake,
-            "woofi": WooFi,
-            "baseswap": BaseSwap,
-            "alienswap": AlienSwap,
-            "maverick": Maverick,
-            "odos": Odos,
-            "inch": Inch,
+            "syncswap": SyncSwap,
+            "skydrome": Skydrome,
+            "zebra": Zebra,
             "xyswap": XYSwap,
-            "openocean": OpenOcean,
         }
 
     def get_swap_module(self, use_dex: list):
@@ -35,7 +30,7 @@ class Multiswap(Account):
             sleep_to: int,
             min_swap: int,
             max_swap: int,
-            slippage: int,
+            slippage: Union[int, float],
             random_swap_token: bool,
             min_percent: int,
             max_percent: int
@@ -43,19 +38,19 @@ class Multiswap(Account):
         quantity_swap = random.randint(min_swap, max_swap)
 
         if random_swap_token:
-            path = [random.choice(["ETH", "USDBC"]) for _ in range(0, quantity_swap)]
-            USDBC_balance = await self.get_balance(BASE_TOKENS["USDBC"])
-            if path[0] == "USDBC" and USDBC_balance["balance"] <= 1:
+            path = [random.choice(["ETH", "USDC"]) for _ in range(0, quantity_swap)]
+            usdc_balance = await self.get_balance(SCROLL_TOKENS["USDC"])
+            if path[0] == "USDC" and usdc_balance["balance"] <= 1:
                 path[0] = "ETH"
         else:
-            path = ["ETH" if _ % 2 == 0 else "USDBC" for _ in range(0, quantity_swap)]
+            path = ["ETH" if _ % 2 == 0 else "USDC" for _ in range(0, quantity_swap)]
 
         logger.info(f"[{self.account_id}][{self.address}] Start MultiSwap | quantity swaps: {quantity_swap}")
 
         for _, token in enumerate(path):
             if token == "ETH":
                 decimal = 6
-                to_token = "USDBC"
+                to_token = "USDC"
 
                 balance = await self.w3.eth.get_balance(self.address)
 
@@ -65,12 +60,12 @@ class Multiswap(Account):
                 decimal = 18
                 to_token = "ETH"
 
-                balance = await self.get_balance(BASE_TOKENS["USDBC"])
+                balance = await self.get_balance(SCROLL_TOKENS["USDC"])
 
                 min_amount = balance["balance"] if balance["balance"] <= 1 else balance["balance"] / 100 * min_percent
                 max_amount = balance["balance"] if balance["balance"] <= 1 else balance["balance"] / 100 * max_percent
 
-            swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key)
+            swap_module = self.get_swap_module(use_dex)(self.account_id, self.private_key, self.recipient)
             await swap_module.swap(
                 token,
                 to_token,

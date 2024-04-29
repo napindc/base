@@ -1,187 +1,129 @@
 import json
+import os
+base_dir = os.path.dirname(os.path.abspath(__file__))
 
-with open('data/rpc.json') as file:
+with open(os.path.join(base_dir, 'data/rpc.json')) as file:
     RPC = json.load(file)
 
-with open('data/abi/erc20_abi.json') as file:
+with open(os.path.join(base_dir, 'data/abi/erc20_abi.json')) as file:
     ERC20_ABI = json.load(file)
 
-with open("accounts.txt", "r") as file:
-    ACCOUNTS = [row.strip() for row in file]
+with open(os.path.join(base_dir, 'data/abi/bridge/deposit.json')) as file:
+    DEPOSIT_ABI = json.load(file)
 
-with open('data/abi/base/bridge.json') as file:
-    BASE_BRIDGE_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/bridge/withdraw.json')) as file:
+    WITHDRAW_ABI = json.load(file)
 
-with open('data/abi/base/weth.json') as file:
+with open(os.path.join(base_dir, 'data/abi/bridge/oracle.json')) as file:
+    ORACLE_ABI = json.load(file)
+
+with open(os.path.join(base_dir, 'data/abi/scroll/weth.json')) as file:
     WETH_ABI = json.load(file)
 
-with open("data/abi/uniswap/router.json", "r") as file:
-    UNISWAP_ROUTER_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/syncswap/router.json'), "r") as file:
+    SYNCSWAP_ROUTER_ABI = json.load(file)
 
-with open("data/abi/pancake/factory.json", "r") as file:
-    UNISWAP_FACTORY_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/syncswap/classic_pool.json')) as file:
+    SYNCSWAP_CLASSIC_POOL_ABI = json.load(file)
 
-with open("data/abi/uniswap/quoter.json", "r") as file:
-    UNISWAP_QUOTER_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/syncswap/classic_pool_data.json')) as file:
+    SYNCSWAP_CLASSIC_POOL_DATA_ABI = json.load(file)
 
-with open("data/abi/pancake/router.json", "r") as file:
-    PANCAKE_ROUTER_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/skydrome/abi.json'), "r") as file:
+    SKYDROME_ROUTER_ABI = json.load(file)
 
-with open("data/abi/pancake/factory.json", "r") as file:
-    PANCAKE_FACTORY_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/zebra/abi.json'), "r") as file:
+    ZEBRA_ROUTER_ABI = json.load(file)
 
-with open("data/abi/pancake/quoter.json", "r") as file:
-    PANCAKE_QUOTER_ABI = json.load(file)
-
-with open("data/abi/woofi/router.json", "r") as file:
-    WOOFI_ROUTER_ABI = json.load(file)
-
-with open("data/abi/baseswap/router.json", "r") as file:
-    BASESWAP_ROUTER_ABI = json.load(file)
-
-with open("data/abi/alien/abi.json", "r") as file:
-    ALIEN_ROUTER_ABI = json.load(file)
-
-with open("data/abi/maverick/position.json", "r") as file:
-    MAVERICK_POSITION_ABI = json.load(file)
-
-with open("data/abi/maverick/router.json", "r") as file:
-    MAVERICK_ROUTER_ABI = json.load(file)
-
-with open("data/abi/bungee/abi.json", "r") as file:
-    BUNGEE_ABI = json.load(file)
-
-with open("data/abi/stargate/bridge.json", "r") as file:
-    STARGATE_BRIDGE_ABI = json.load(file)
-
-with open("data/abi/stargate/router.json", "r") as file:
-    STARGATE_ROUTER_ABI = json.load(file)
-
-with open("data/abi/aave/abi.json", "r") as file:
+with open(os.path.join(base_dir, 'data/abi/aave/abi.json'), "r") as file:
     AAVE_ABI = json.load(file)
 
-with open("data/abi/moonwell/abi.json", "r") as file:
-    MOONWELL_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/layerbank/abi.json'), "r") as file:
+    LAYERBANK_ABI = json.load(file)
 
-with open("data/abi/l2telegraph/send_message.json", "r") as file:
-    L2TELEGRAPH_MESSAGE_ABI = json.load(file)
-
-with open("data/abi/l2telegraph/bridge_nft.json", "r") as file:
-    L2TELEGRAPH_NFT_ABI = json.load(file)
-
-with open("data/abi/mintfun/abi.json", "r") as file:
-    MINTFUN_ABI = json.load(file)
-
-with open("data/abi/rai/abi.json", "r") as file:
-    RAI_ABI = json.load(file)
-
-with open("data/abi/gnosis/abi.json", "r") as file:
-    SAFE_ABI = json.load(file)
-
-with open("data/abi/zerius/abi.json", "r") as file:
+with open(os.path.join(base_dir, 'data/abi/zerius/abi.json'), "r") as file:
     ZERIUS_ABI = json.load(file)
 
-with open("data/abi/nft2me/abi.json", "r") as file:
-    NFTS2ME_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/l2pass/abi.json'), "r") as file:
+    L2PASS_ABI = json.load(file)
 
-with open("data/abi/dmail/abi.json", "r") as file:
+with open(os.path.join(base_dir, 'data/abi/dmail/abi.json'), "r") as file:
     DMAIL_ABI = json.load(file)
 
-with open("data/abi/zkstars/abi.json", "r") as file:
+with open(os.path.join(base_dir, 'data/abi/omnisea/abi.json'), "r") as file:
+    OMNISEA_ABI = json.load(file)
+
+with open(os.path.join(base_dir, 'data/abi/nft2me/abi.json'), "r") as file:
+    NFTS2ME_ABI = json.load(file)
+
+with open(os.path.join(base_dir, 'data/abi/gnosis/abi.json'), "r") as file:
+    SAFE_ABI = json.load(file)
+
+with open(os.path.join(base_dir, 'data/deploy/abi.json'), "r") as file:
+    DEPLOYER_ABI = json.load(file)
+
+with open(os.path.join(base_dir, 'data/deploy/bytecode.txt'), "r") as file:
+    DEPLOYER_BYTECODE = file.read()
+
+with open(os.path.join(base_dir, 'data/abi/zkstars/abi.json'), "r") as file:
     ZKSTARS_ABI = json.load(file)
 
-with open("data/abi/rocketsam/abi.json", "r") as file:
-    ROCKETSAM_ABI = json.load(file)
+with open(os.path.join(base_dir, 'data/abi/rubyscore/abi.json'), "r") as file:
+    RUBYSCORE_VOTE_ABI = json.load(file)
 
 ZERO_ADDRESS = "0x0000000000000000000000000000000000000000"
 
-BASE_BRIDGE_CONTRACT = "0x49048044D57e1C92A77f79988d21Fa8fAF74E97e"
-
-ORBITER_CONTRACT = ""
-
-BASE_TOKENS = {
-    "ETH": "0x4200000000000000000000000000000000000006",
-    "WETH": "0x4200000000000000000000000000000000000006",
-    "USDBC": "0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA",
-    "USDC": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    "DAI": "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb",
+BRIDGE_CONTRACTS = {
+    "deposit": "0xf8b1378579659d8f7ee5f3c929c2f3e332e41fd6",
+    "withdraw": "0x4C0926FF5252A435FD19e10ED15e5a249Ba19d79",
+    "oracle": "0x987e300fDfb06093859358522a79098848C33852"
 }
 
-UNISWAP_CONTRACTS = {
-    "router": "0x2626664c2603336E57B271c5C0b26F421741e481",
-    "factory": "0x33128a8fC17869897dcE68Ed026d694621f6FDfD",
-    "quoter": "0x3d4e44Eb1374240CE5F1B871ab261CD16335B76a",
+ORBITER_CONTRACT = "0x80c67432656d59144ceff962e8faf8926599bcf8"
+
+SCROLL_TOKENS = {
+    "ETH": "0x5300000000000000000000000000000000000004",
+    "WETH": "0x5300000000000000000000000000000000000004",
+    "USDC": "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4"
 }
 
-PANCAKE_CONTRACTS = {
-    "router": "0x678Aa4bF4E210cf2166753e054d5b7c31cc7fa86",
-    "factory": "0x0BFbCF9fa4f9C56B0F40a671Ad40E0805A091865",
-    "quoter": "0xB048Bbc1Ee6b733FFfCFb9e9CeF7375518e25997"
+SYNCSWAP_CONTRACTS = {
+    "router": "0x80e38291e06339d10aab483c65695d004dbd5c69",
+    "classic_pool": "0x37BAc764494c8db4e54BDE72f6965beA9fa0AC2d"
 }
 
-WOOFI_CONTRACTS = {
-    "router": "0x27425e9fb6a9a625e8484cfd9620851d1fa322e5"
+SKYDROME_CONTRACTS = {
+    "router": "0xAA111C62cDEEf205f70E6722D1E22274274ec12F"
 }
 
-BASESWAP_CONTRACTS = {
-    "router": "0x327Df1E6de05895d2ab08513aaDD9313Fe505d86"
+ZEBRA_CONTRACTS = {
+    "router": "0x0122960d6e391478bfe8fb2408ba412d5600f621"
 }
 
-ALIEN_CONTRACTS = {
-    "router": "0x8c1a3cf8f83074169fe5d7ad50b978e1cd6b37c7"
-}
-
-ODOS_CONTRACT = {
-    "router": "0x19ceead7105607cd444f5ad10dd51356436095a1",
-    "use_ref": True  # If you use True, you support me 1% of the transaction amount
-}
-
-INCH_CONTRACT = {
-    "router": "0x1111111254eeb25477b68fb85ed929f73a960582",
-    "use_ref": True  # If you use True, you support me 1% of the transaction amount
-}
-
-OPENOCEAN_CONTRACT = {
-    "router": "0x6352a56caadc4f1e25cd6c75970fa768a3304e64",
-    "use_ref": True  # If you use True, you support me 1% of the transaction amount
+AMBIENT_CONTRACTS = {
+    "router": "0xaaaaaaaacb71bf2c8cae522ea5fa455571a74106",
+    "impact": "0xc2c301759B5e0C385a38e678014868A33E2F3ae3"
 }
 
 XYSWAP_CONTRACT = {
-    "router": "0x6acd0ec9405ccb701c57a88849c4f1cd85a3f3ab",
-    "use_ref": True  # If you use True, you support me 1% of the transaction amount
+    "router": "0x22bf2a9fcaab9dc96526097318f459ef74277042",
+    "use_ref": False  # If you use True, you support me 1% of the transaction amount
 }
 
-MAVERICK_CONTRACTS = {
-    "router": "0x32AED3Bce901DA12ca8489788F3A99fCe1056e14",
-    "pool": "0x06e6736ca9e922766279a22b75a600fe8b8473b6",
-    "pool_information": "0x6E230D0e457Ea2398FB3A22FB7f9B7F68F06a14d",
-}
+AAVE_CONTRACT = "0xff75a4b698e3ec95e608ac0f22a03b8368e05f5d"
 
-BUNGEE_CONTRACT = "0xe8c5b8488feafb5df316be73ede3bdc26571a773"
+AAVE_WETH_CONTRACT = "0xf301805be1df81102c957f6d4ce29d2b8c056b2a"
 
-STARGATE_CONTRACTS = {
-    "router": "0xAF54BE5B6eEc24d6BFACf1cce4eaF680A8239398",
-    "bridge": "0x50b6ebc2103bfec165949cc946d739d5650d7ae4"
-}
+LAYERBANK_CONTRACT = "0xec53c830f4444a8a56455c6836b5d2aa794289aa"
 
-AAVE_CONTRACT = "0x18cd499e3d7ed42feba981ac9236a278e4cdc2ee"
+LAYERBANK_WETH_CONTRACT = "0x274C3795dadfEbf562932992bF241ae087e0a98C"
 
-AAVE_WETH_CONTRACT = "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7"
+ZERIUS_CONTRACT = "0xeb22c3e221080ead305cae5f37f0753970d973cd"
 
-MOONWELL_CONTRACT = "0x70778cfcFC475c7eA0f24cC625Baf6EaE475D0c9"
+DMAIL_CONTRACT = "0x47fbe95e981c0df9737b6971b451fb15fdc989d9"
 
-MOONWELL_WETH_CONTRACT = "0x628ff693426583D9a7FB391E54366292F509D457"
+OMNISEA_CONTRACT = "0x46ce46951d12710d85bc4fe10bb29c6ea5012077"
 
-MINTFUN_CONTRACT = "0xf39ac57beaf8f97b89db7a9203a4e47c17cf4391"
+SAFE_CONTRACT = "0xa6b71e26c5e0845f74c812102ca7114b6a896ab2"
 
-L2TELEGRAPH_MESSAGE_CONTRACT = "0x64e0f6164ac110b67df9a4848707ffbcb86c87a9"
-
-L2TELEGRAPH_NFT_CONTRACT = "0x36a358b3ba1fb368e35b71ea40c7f4ab89bfd8e1"
-
-RAI_CONTRACT = "0xbc097e42bf1e6531c32c5cee945e0c014fa21964"
-
-SAFE_CONTRACT = "0xc22834581ebc8527d974f8a1c97e1bea4ef910bc"
-
-ZERIUS_CONTRACT = "0x178608ffe2cca5d36f3fc6e69426c4d3a5a74a41"
-
-DMAIL_CONTRACT = "0x47fbe95e981C0Df9737B6971B451fB15fdC989d9"
+RUBYSCORE_VOTE_CONTRACT = "0xe10Add2ad591A7AC3CA46788a06290De017b9fB4"

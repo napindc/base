@@ -2,15 +2,15 @@ from typing import Dict
 
 import aiohttp
 from loguru import logger
-from config import XYSWAP_CONTRACT, BASE_TOKENS
+from config import XYSWAP_CONTRACT, SCROLL_TOKENS
 from utils.gas_checker import check_gas
 from utils.helpers import retry
 from .account import Account
 
 
 class XYSwap(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
     async def get_quote(self, from_token: str, to_token: str, amount: int, slippage: float):
         url = "https://aggregator-api.xy.finance/v1/quote"
@@ -86,8 +86,8 @@ class XYSwap(Account):
             f"[{self.account_id}][{self.address}] Swap on XYSwap – {from_token} -> {to_token} | {amount} {from_token}"
         )
 
-        from_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if from_token == "ETH" else BASE_TOKENS[from_token]
-        to_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if to_token == "ETH" else BASE_TOKENS[to_token]
+        from_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if from_token == "ETH" else SCROLL_TOKENS[from_token]
+        to_token = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE" if to_token == "ETH" else SCROLL_TOKENS[to_token]
 
         quote = await self.get_quote(from_token, to_token, amount_wei, slippage)
 

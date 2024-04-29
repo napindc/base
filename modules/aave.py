@@ -9,8 +9,8 @@ from .account import Account
 
 
 class Aave(Account):
-    def __init__(self, account_id: int, private_key: str) -> None:
-        super().__init__(account_id=account_id, private_key=private_key, chain="base")
+    def __init__(self, account_id: int, private_key: str, recipient: str) -> None:
+        super().__init__(account_id=account_id, private_key=private_key, chain="scroll", recipient=recipient)
 
         self.contract = self.get_contract(AAVE_CONTRACT, AAVE_ABI)
 
@@ -50,7 +50,7 @@ class Aave(Account):
         tx_data = await self.get_tx_data(amount_wei)
 
         transaction = await self.contract.functions.depositETH(
-            self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
+            self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
             self.address,
             0
         ).build_transaction(tx_data)
@@ -76,13 +76,16 @@ class Aave(Account):
                 f"[{self.account_id}][{self.address}] Make withdraw from Aave | " +
                 f"{self.w3.from_wei(amount, 'ether')} ETH"
             )
-
-            await self.approve(amount, "0xD4a0e0b9149BCee3C920d2E00b5dE09138fd8bb7", AAVE_CONTRACT)
+            try:
+              await self.approve(amount, "0xf301805be1df81102c957f6d4ce29d2b8c056b2a", AAVE_CONTRACT)
+            except Exception as e:
+              logger.error(f"Output while dealing with func:self.approve() under withdraw function in aave file{e} ")
+              await self.approve(amount, "0xf301805be1df81102c957f6d4ce29d2b8c056b2a", AAVE_CONTRACT)
 
             tx_data = await self.get_tx_data()
 
             transaction = await self.contract.functions.withdrawETH(
-                self.w3.to_checksum_address("0xA238Dd80C259a72e81d7e4664a9801593F98d1c5"),
+                self.w3.to_checksum_address("0x11fCfe756c05AD438e312a7fd934381537D3cFfe"),
                 amount,
                 self.address
             ).build_transaction(tx_data)
